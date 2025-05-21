@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaibhav Pratap Singh | Social Media Marketer & Web Developer</title>
+    <meta name="description" content="Portfolio of Vaibhav Pratap Singh - Social Media Marketing Executive and Web Developer from Kanpur, India">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        electric: '#00FFFF',
+                        neon: '#39FF14',
+                        ultraviolet: '#8A2BE2',
+                        dark: '#000000',
+                        darkgray: '#121212',
+                    },
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'text-gradient': 'text-gradient 1.5s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'text-gradient': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Link to Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="dark:bg-dark">
+    <!-- Particle Background Container (JS will populate this) -->
+    <div id="particles-container" class="absolute inset-0 z-0 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-xl font-bold gradient-text">VAIBHAV</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-white hover:text-electric px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-white hover:text-neon px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="nav-link text-white hover:text-ultraviolet px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="nav-link text-white hover:text-electric px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#experience" class="nav-link text-white hover:text-neon px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#contact" class="nav-link text-white hover:text-ultraviolet px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <div class="flex items-center">
+                        <span class="mr-2 text-sm text-gray-300">Light</span>
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                            <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <span class="text-sm text-gray-300">Dark</span>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu closed md:hidden fixed inset-y-0 right-0 w-64 bg-darkgray bg-opacity-95 backdrop-blur-lg z-[60] p-4">
+            <div class="flex justify-end">
+                <button id="close-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-10 flex flex-col space-y-6">
+                <a href="#home" class="nav-link text-white hover:text-electric px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-neon px-3 py-2 rounded-md text-lg font-medium">About</a>
+                <a href="#skills" class="nav-link text-white hover:text-ultraviolet px-3 py-2 rounded-md text-lg font-medium">Skills</a>
+                <a href="#projects" class="nav-link text-white hover:text-electric px-3 py-2 rounded-md text-lg font-medium">Projects</a>
+                <a href="#experience" class="nav-link text-white hover:text-neon px-3 py-2 rounded-md text-lg font-medium">Experience</a>
+                <a href="#contact" class="nav-link text-white hover:text-ultraviolet px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800">
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.linkedin.com/in/vaibhav2210" class="text-gray-300 hover:text-electric social-icon">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/Vbhv-1501" class="text-gray-300 hover:text-neon social-icon">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://x.com/Vaibhav_1501" class="text-gray-300 hover:text-ultraviolet social-icon">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="mailto:vaibhav.pratap.1501@gmail.com" class="text-gray-300 hover:text-electric social-icon">
+                        <i class="fas fa-envelope fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="absolute inset-0 z-10 bg-gradient-to-b from-black via-black/90 to-black"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                        <span class="gradient-text">Vaibhav Pratap Singh</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-medium text-gray-300 mb-6">
+                        Bridging Business & Tech through <span class="gradient-text">Code + Creativity</span>
+                    </h2>
+                    <div class="text-lg md:text-xl mb-8 h-8">
+                        <span id="dynamic-text" class="typing-animation">Social Media Marketer | Web Developer | Full-Stack Enthusiast</span>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-electric to-neon text-black font-bold rounded-full hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg glow">
+                            Get In Touch
+                        </a>
+                        <a href="https://drive.google.com/file/d/1Z-q2N3SKmq3w--tKiv6WdCRhZcbAO4lp/view?usp=sharing" class="px-6 py-3 border border-electric text-white font-bold rounded-full hover:bg-electric hover:bg-opacity-10 transition-all duration-300 transform hover:scale-105">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-electric via-neon to-ultraviolet opacity-20 blur-xl animate-pulse-slow"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-electric glow">
+                            <img src="vaibhav2.jpg"
+                                 alt="Vaibhav Pratap Singh"
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center z-20">
+            <a href="#about" class="text-gray-400 hover:text-white animate-bounce">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">About Me</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-72 md:h-72">
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-electric via-neon to-ultraviolet opacity-20 blur-xl animate-pulse-slow"></div>
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden border-2 border-electric glow">
+                            <img src="Vaibhav Linkedin.jpeg"
+                                 alt="Vaibhav Pratap Singh"
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold mb-6 text-electric">Hi, I'm Vaibhav –</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        A tech-savvy marketer and passionate developer with a flair for creating meaningful digital connections. With a degree in Computer Science Engineering and hands-on experience in digital marketing, business development, and frontend development, I combine creativity with technical acumen to craft impactful digital experiences.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1 text-neon">
+                                <i class="fas fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Education</h4>
+                                <p class="text-gray-300">B.Tech in Computer Science</p>
+                                <p class="text-gray-400 text-sm">AKTU (2024)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mr-4 mt-1 text-ultraviolet">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Based In</h4>
+                                <p class="text-gray-300">Kanpur, India</p>
+                                <p class="text-gray-400 text-sm">Open to remote opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkgray p-6 rounded-xl border border-gray-800">
+                        <div class="flex">
+                            <div class="mr-4 text-electric text-2xl">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div>
+                                <p class="italic text-gray-300 mb-2">
+                                    "Solving real-world problems through innovative web technologies and strategic digital outreach is what drives me every day."
+                                </p>
+                                <div class="w-20 h-0.5 bg-gradient-to-r from-electric to-neon mb-2"></div>
+                                <p class="text-sm text-gray-400">- Personal Motto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-darkgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">My Skills</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+                    A diverse skill set combining technical expertise and practical application.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Technical Skills -->
+                <div class="bg-black p-6 rounded-xl neon-border hover:border-electric transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="mr-4 text-electric text-2xl">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Technical Skills</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">HTML/CSS</span>
+                                <span class="text-sm text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%; opacity: 0;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">JavaScript</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%; opacity: 0;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">React.js / Next.js</span>
+                                <span class="text-sm text-gray-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%; opacity: 0;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Python (Basics)</span>
+                                <span class="text-sm text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%; opacity: 0;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Tailwind CSS</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%; opacity: 0;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="bg-black p-6 rounded-xl neon-border hover:border-neon transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="mr-4 text-neon text-2xl">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Git & GitHub</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">VS Code</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Netlify</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Vercel</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Figma (Basics)</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Stripe API</span>
+                         <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">MongoDB Atlas</span>
+                         <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Google Analytics</span>
+                    </div>
+                     <h4 class="text-lg font-semibold mt-6 mb-3 text-neon">Marketing Tech</h4>
+                     <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Meta Ads Manager</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Google Ads</span>
+                        <span class="text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full">SEO Principles</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="bg-black p-6 rounded-xl neon-border hover:border-ultraviolet transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="mr-4 text-ultraviolet text-2xl">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Soft Skills</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="mr-2 text-electric">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Communication</span>
+                        </div>
+                         <div class="flex items-center">
+                            <div class="mr-2 text-neon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Problem Solving</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-ultraviolet">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Teamwork</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-electric">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Adaptability</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Creativity</span>
+                        </div>
+                         <div class="flex items-center">
+                            <div class="mr-2 text-ultraviolet">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Client Interaction</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-electric">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Time Management</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-2 text-neon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="text-sm">Attention to Detail</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Coding Projects</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+                    A selection of my web development work.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <!-- Project: E-commerce Platform -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80"
+                             alt="E-commerce Website"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">E-commerce Platform</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs px-2 py-1 bg-electric/20 text-electric rounded">Next.js</span>
+                                <span class="text-xs px-2 py-1 bg-neon/20 text-neon rounded">Stripe</span>
+                                <span class="text-xs px-2 py-1 bg-ultraviolet/20 text-ultraviolet rounded">MongoDB</span>
+                                <span class="text-xs px-2 py-1 bg-electric/20 text-electric rounded">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">
+                            A full-featured e-commerce website with user auth, product listings, cart functionality, and secure payment processing via Stripe.
+                        </p>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-sm font-medium text-electric hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-sm font-medium text-gray-400 hover:text-white flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project: Developer Portfolio Template -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                             alt="Developer Portfolio Template"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">React Portfolio Template</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs px-2 py-1 bg-electric/20 text-electric rounded">React</span>
+                                <span class="text-xs px-2 py-1 bg-neon/20 text-neon rounded">Framer Motion</span>
+                                <span class="text-xs px-2 py-1 bg-ultraviolet/20 text-ultraviolet rounded">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">
+                            A reusable, animated portfolio template built for developers using React and Framer Motion for smooth animations.
+                        </p>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-sm font-medium text-electric hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-sm font-medium text-gray-400 hover:text-white flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project: Marketing Data Dashboard -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                             alt="Marketing Dashboard"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Marketing Data Dashboard</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs px-2 py-1 bg-electric/20 text-electric rounded">React</span>
+                                <span class="text-xs px-2 py-1 bg-neon/20 text-neon rounded">Chart.js</span>
+                                <span class="text-xs px-2 py-1 bg-ultraviolet/20 text-ultraviolet rounded">API</span>
+                                <span class="text-xs px-2 py-1 bg-electric/20 text-electric rounded">CSS Modules</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">
+                             Frontend dashboard visualizing marketing campaign data fetched from APIs, built with React and Chart.js.
+                        </p>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-sm font-medium text-electric hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-sm font-medium text-gray-400 hover:text-white flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-darkgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Work Experience</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+                    My professional journey bridging tech and marketing roles.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="timeline pl-8 md:pl-16">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item relative pb-8">
+                        <div class="bg-black p-6 rounded-xl neon-border">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-electric">Social Media Marketing Executive</h3>
+                                <span class="text-sm text-gray-400 mt-1 md:mt-0">Oct 2024 - Present</span>
+                            </div>
+                            <div class="flex items-center text-gray-300 mb-4">
+                                <i class="fas fa-building mr-2 text-sm"></i>
+                                <span>Era Sky Technologies</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Manage social media campaigns, analyze performance, and create content calendars.</li>
+                                <li>Collaborate on digital marketing strategies, bridging creative content with technical implementation.</li>
+                                <li>Utilize analytics tools to drive data-informed decisions for campaign optimization.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="timeline-item relative pb-8">
+                        <div class="bg-black p-6 rounded-xl neon-border">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-neon">Client Onboarding Specialist</h3>
+                                <span class="text-sm text-gray-400 mt-1 md:mt-0">Sep 2024 - Oct 2024</span>
+                            </div>
+                            <div class="flex items-center text-gray-300 mb-4">
+                                <i class="fas fa-building mr-2 text-sm"></i>
+                                <span>Exporters Worlds</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Onboarded international clients, streamlining communication and technical setup.</li>
+                                <li>Developed training materials and improved CRM processes, reducing onboarding time.</li>
+                                <li>Acted as liaison between technical and business teams for client issue resolution.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="timeline-item relative pb-8">
+                        <div class="bg-black p-6 rounded-xl neon-border">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-ultraviolet">Sales Executive</h3>
+                                <span class="text-sm text-gray-400 mt-1 md:mt-0">Oct 2023 - Sep 2024</span>
+                            </div>
+                            <div class="flex items-center text-gray-300 mb-4">
+                                <i class="fas fa-building mr-2 text-sm"></i>
+                                <span>Policy Suggest</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Exceeded sales targets through effective client communication and support.</li>
+                                <li>Handled complex customer inquiries, requiring clear explanation of technical aspects.</li>
+                                <li>Trained new team members on product knowledge and sales techniques.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Certifications</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                 <!-- Certification: Web Dev Bootcamp -->
+                 <div class="bg-darkgray p-6 rounded-xl neon-border hover:border-ultraviolet transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-ultraviolet/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-laptop-code text-ultraviolet text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Web Development Bootcamp</h3>
+                            <p class="text-sm text-gray-400">Udemy</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 text-sm">
+                        Full-stack development covering HTML, CSS, JavaScript, React, Node.js, databases, and deployment.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">Completed: 2023</span>
+                        <a href="https://www.udemy.com/certificate/UC-1d0c4d21-04a6-4be0-aa32-0096c8553a89/" class="text-xs text-ultraviolet hover:underline">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Certification: Digital Marketing -->
+                <div class="bg-darkgray p-6 rounded-xl neon-border hover:border-electric transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-electric/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-certificate text-electric text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Digital Marketing</h3>
+                            <p class="text-sm text-gray-400">HubSpot Academy</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 text-sm">
+                        Comprehensive training in inbound marketing, content strategy, SEO, and social media marketing.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">Completed: 2025</span>
+                        <a href="https://app.hubspot.com/academy/achievements/yb2w3y78/en/1/jack-exporters-worlds/digital-marketing" class="text-xs text-electric hover:underline">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Certification: Cloud Computing -->
+                <div class="bg-darkgray p-6 rounded-xl neon-border hover:border-neon transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-neon/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-cloud text-neon text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Cloud Computing Fundamentals</h3>
+                            <p class="text-sm text-gray-400">Coursera</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 text-sm">
+                        Introduction to cloud infrastructure, deployment models, and core AWS services architecture.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">Completed: 2024</span>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/7D1B6OYG6F7S" class="text-xs text-neon hover:underline">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-darkgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Get In Touch</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric to-neon mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
+                    Have a project in mind or want to discuss opportunities? Feel free to reach out!
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <!-- MODIFIED FORM for Google Sheets -->
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-gray-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-gray-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject"
+                                   class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-gray-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                      class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-gray-500 focus:outline-none"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" id="contactSubmitButton"
+                                    class="w-full px-6 py-3 bg-gradient-to-r from-electric to-neon text-black font-bold rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-[1.02] shadow-lg glow">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <!-- ADDED DIV for form response messages -->
+                    <div id="form-response-message" class="mt-6 text-center"></div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <div class="bg-black p-8 rounded-xl h-full neon-border">
+                        <h3 class="text-xl font-bold text-electric mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-neon">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">Location</h4>
+                                    <p class="text-gray-300">Kanpur, Uttar Pradesh, India</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-electric">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">Email</h4>
+                                    <a href="mailto:vaibhav.pratap.1501@gmail.com" class="text-gray-300 hover:text-electric transition-colors">vaibhav.pratap.1501@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-ultraviolet">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">Phone</h4>
+                                    <a href="tel:+918858456997" class="text-gray-300 hover:text-ultraviolet transition-colors">+91 88584 56997</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-12">
+                            <h4 class="font-medium text-lg mb-4 text-neon">Connect With Me</h4>
+                            <div class="flex space-x-6">
+                                <a href="https://www.linkedin.com/in/vaibhav2210" class="social-icon text-gray-400 hover:text-electric text-2xl">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/Vbhv-1501" class="social-icon text-gray-400 hover:text-neon text-2xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://x.com/Vaibhav_1501" class="social-icon text-gray-400 hover:text-ultraviolet text-2xl">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/thakur_._vaibhav" class="social-icon text-gray-400 hover:text-electric text-2xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center">
+                <div class="mb-8">
+                    <span class="text-2xl font-bold gradient-text">VAIBHAV PRATAP SINGH</span>
+                </div>
+                <div class="flex space-x-6 mb-8 flex-wrap justify-center">
+                    <a href="#home" class="text-gray-400 hover:text-electric transition-colors">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-neon transition-colors">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-ultraviolet transition-colors">Skills</a>
+                    <a href="#projects" class="text-gray-400 hover:text-electric transition-colors">Projects</a>
+                    <a href="#experience" class="text-gray-400 hover:text-neon transition-colors">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-ultraviolet transition-colors">Contact</a>
+                </div>
+                <div class="flex space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/vaibhav2210" class="social-icon text-gray-400 hover:text-electric text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Vbhv-1501" class="social-icon text-gray-400 hover:text-neon text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/Vaibhav_1501" class="social-icon text-gray-400 hover:text-ultraviolet text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:vaibhav.pratap.1501@gmail.com" class="social-icon text-gray-400 hover:text-electric text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="text-center text-gray-500 text-sm">
+                    <p>© 2024 Vaibhav Pratap Singh. All rights reserved.</p>
+                    <p class="mt-2">Designed & Developed with <i class="fas fa-heart text-red-500"></i> by Vaibhav</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

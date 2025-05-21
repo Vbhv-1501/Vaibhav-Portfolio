@@ -1,0 +1,296 @@
+/* Base styles handled by Tailwind, these are custom additions and overrides */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000; /* Default dark background */
+    color: #ffffff; /* Default dark text color */
+    overflow-x: hidden;
+    position: relative; /* Needed for absolute positioned particles */
+}
+
+/* Apply dark mode colors directly as body starts with dark:bg-dark */
+body.dark {
+    background-color: #000000;
+    color: #ffffff;
+}
+body:not(.dark) { /* Light mode styles */
+    background-color: #ffffff; /* Example light background */
+    color: #1f2937; /* Example light text color */
+}
+body:not(.dark) .dark\:bg-dark { /* Override dark specific utility */
+   background-color: #ffffff !important; /* Or your light mode bg */
+}
+/* Add more light mode overrides as needed */
+body:not(.dark) .text-white { color: #1f2937 !important; }
+body:not(.dark) .text-gray-300 { color: #4b5563 !important; }
+body:not(.dark) .text-gray-400 { color: #6b7280 !important; }
+body:not(.dark) .text-gray-500 { color: #6b7280 !important; }
+body:not(.dark) .bg-black { background-color: #f9fafb !important; /* Light gray background */ }
+body:not(.dark) .bg-darkgray { background-color: #f3f4f6 !important; /* Lighter gray background */ }
+body:not(.dark) nav { background-color: rgba(255, 255, 255, 0.8) !important; }
+body:not(.dark) .nav-link { color: #1f2937 !important; }
+body:not(.dark) .nav-link:hover { color: #00FFFF !important; } /* Keep hover colors? Or adjust */
+body:not(.dark) .gradient-text {
+     background-image: linear-gradient(90deg, #0ea5e9, #22c55e, #a855f7, #0ea5e9); /* Adjust gradient for light mode? */
+}
+body:not(.dark) .neon-border { border-color: rgba(107, 114, 128, 0.3) !important; } /* Light border */
+body:not(.dark) .neon-border:hover {
+    border-color: rgba(14, 165, 233, 0.8) !important; /* Example light hover border */
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.5) !important; /* Example light hover shadow */
+}
+body:not(.dark) .input-field {
+    background-color: rgba(229, 231, 235, 0.7) !important; /* Light input bg */
+    border: 1px solid rgba(156, 163, 175, 0.5) !important; /* Light input border */
+    color: #1f2937 !important; /* Light input text */
+    --tw-placeholder-color: #6b7280 !important; /* Light placeholder */
+     placeholder-color: var(--tw-placeholder-color);
+}
+body:not(.dark) .input-field:focus {
+    border: 1px solid rgba(59, 130, 246, 0.8) !important; /* Light focus border */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5) !important; /* Light focus shadow */
+}
+body:not(.dark) .skill-bar { background-color: rgba(229, 231, 235, 0.7) !important; } /* Light skill bar bg */
+body:not(.dark) .project-card {
+    background: linear-gradient(145deg, rgba(249, 250, 251, 0.7), rgba(255, 255, 255, 0.9)) !important; /* Light card bg */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Optional light shadow */
+}
+body:not(.dark) .project-card:hover {
+    transform: translateY(-5px); /* Adjust hover effect for light */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+body:not(.dark) #mobile-menu { background-color: rgba(243, 244, 246, 0.95) !important; } /* Light mobile menu bg */
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.gradient-text {
+    background-image: linear-gradient(90deg, #00FFFF, #39FF14, #8A2BE2, #00FFFF);
+    background-size: 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text-gradient 3s ease infinite;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #00FFFF, #39FF14);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.glow {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+.glow:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+}
+
+.neon-border {
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0; /* Start hidden for scroll animation */
+}
+body:not(.dark) .neon-border { /* Light mode base border */
+    border-color: rgba(107, 114, 128, 0.3) !important;
+}
+
+.neon-border:hover {
+    border: 1px solid rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+body:not(.dark) .neon-border:hover { /* Light mode hover */
+    border-color: rgba(14, 165, 233, 0.8) !important;
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.5) !important;
+}
+
+.input-field {
+    background-color: rgba(18, 18, 18, 0.7);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    transition: all 0.3s ease;
+}
+body:not(.dark) .input-field { /* Light mode base */
+    background-color: rgba(229, 231, 235, 0.7) !important;
+    border: 1px solid rgba(156, 163, 175, 0.5) !important;
+}
+
+
+.input-field:focus {
+    outline: none;
+    border: 1px solid rgba(57, 255, 20, 0.8);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+body:not(.dark) .input-field:focus { /* Light mode focus */
+    border: 1px solid rgba(59, 130, 246, 0.8) !important;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5) !important;
+}
+
+.skill-bar {
+    height: 8px;
+    background-color: rgba(18, 18, 18, 0.7);
+    border-radius: 4px;
+    overflow: hidden;
+}
+body:not(.dark) .skill-bar { /* Light mode base */
+    background-color: rgba(229, 231, 235, 0.7) !important;
+}
+
+.skill-progress {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #00FFFF, #39FF14);
+    transition: width 1s ease, opacity 0.5s ease; /* Added opacity transition */
+    width: 0; /* Start with width 0 for animation */
+    opacity: 0; /* Start hidden for scroll animation */
+}
+body:not(.dark) .skill-progress { /* Light mode gradient */
+    background: linear-gradient(90deg, #0ea5e9, #22c55e) !important;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -30px; /* Adjusted for pl-8 */
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00FFFF, #39FF14);
+    z-index: 1; /* Ensure dot is above line */
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .timeline-item::before {
+        left: -45px; /* Adjusted for md:pl-16 */
+    }
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    left: -23px; /* Adjusted for pl-8 */
+    top: 0;
+    bottom: 0; /* Use bottom instead of height */
+    width: 2px;
+    background: linear-gradient(to bottom, #00FFFF, #39FF14, #8A2BE2);
+    z-index: 0; /* Ensure line is behind dots */
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .timeline::after {
+        left: -38px; /* Adjusted for md:pl-16 */
+    }
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.7), rgba(0, 0, 0, 0.9));
+    opacity: 0; /* Start hidden for scroll animation */
+    transform: translateY(20px); /* Start slightly lower */
+}
+body:not(.dark) .project-card { /* Light mode base */
+    background: linear-gradient(145deg, rgba(249, 250, 251, 0.7), rgba(255, 255, 255, 0.9)) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Adjust target position */
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+}
+body:not(.dark) .project-card:hover { /* Light mode hover */
+    transform: translateY(-10px); /* Keep Y transform */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.7));
+}
+body:not(.dark) .social-icon:hover { /* Optional: Adjust light mode hover filter */
+    filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.5));
+}
+
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: #39FF14; /* Match neon color */
+    background-color: #39FF14; /* Neon green background when checked */
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: rgba(57, 255, 20, 0.2); /* Neon green tint */
+}
+
+.toggle-checkbox { /* Default (unchecked) state */
+    background-color: #fff; /* White circle */
+    border-color: #d1d5db; /* Gray border */
+}
+.toggle-label { /* Default (unchecked) state */
+     background-color: #d1d5db; /* Gray background */
+}
+
+
+.mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-menu.closed {
+    transform: translateX(100%);
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none; /* Ensure they don't interfere with clicks */
+    animation: float 6s ease-in-out infinite; /* Reference Tailwind keyframe */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00FFFF } /* Electric color for caret */
+}
+
+.typing-animation {
+    overflow: hidden; /* Ensures the text is clipped */
+    white-space: nowrap; /* Keeps the text on a single line */
+    /* border-right: 2px solid #00FFFF; /* The typwriter cursor */
+    /* animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; */
+    /* Animation will be controlled by JS */
+    display: inline-block; /* Important for width animation */
+    vertical-align: bottom; /* Aligns baseline */
+    letter-spacing: .1em; /* Adjust as needed */
+}
+
+/* Ensure smooth transition for scroll animation visibility */
+.neon-border, .project-card, .skill-progress {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, width 1s ease;
+}
